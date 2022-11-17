@@ -96,6 +96,7 @@ TEST_CASE("btree") {
 	root = Insert(45, root);
 	root = Insert(42, root);
 
+
 	REQUIRE(Contains(20, root) == 1);
 	REQUIRE(Contains(5, root) == 1);
 	REQUIRE(Contains(1, root) == 1);
@@ -122,6 +123,8 @@ TEST_CASE("btree") {
 
 	root = Remove(3, root);
 
+	print_tree(root, 0);
+
 	REQUIRE(Contains(20, root) == 1);
 	REQUIRE(Contains(5, root) == 1);
 	REQUIRE(Contains(1, root) == 1);
@@ -137,7 +140,7 @@ TEST_CASE("btree") {
 
 	REQUIRE(Contains(2, root) == 0);
 	REQUIRE(Contains(3, root) == 0);
-
+	
 	// (D) and (E)
 	root = Insert(-1, root);
 	root = Insert(-1, root);
@@ -163,6 +166,7 @@ TEST_CASE("btree") {
 	REQUIRE(Contains(45, root) == 0);
 	REQUIRE(Contains(42, root) == 0);
 	REQUIRE(Contains(16, root) == 1);
+
 
 	root = Remove(7, root);
 
@@ -192,6 +196,7 @@ TEST_CASE("btree") {
 	root = Remove(30, root);
 	root = Remove(20, root);
 	root = Remove(16, root);
+
 
 	free(root);
 }

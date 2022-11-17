@@ -27,12 +27,19 @@ void print_list(node *p) {
   // Add your code for exercise 1
   // There is NO testcode for this
   // It wil continue to print until = NULL
-  while(p != NULL)
-  {
-    printf("%d", p->value);
-    p = p->next;
-  }
 
+  // Basecase
+  if(p == NULL)
+  {
+    return;
+  }
+  // Recursive
+  else
+ {
+    printf("%d", p->value);
+    print_list(p->next);
+    return;
+  }
 }
 
 int sum_squares(node *p) {
@@ -42,12 +49,18 @@ int sum_squares(node *p) {
 
 // we time the number togehter two time, and then put it together to have number squares.
 // this number is added to the sum.
-  while(p != NULL)
+  
+// Basecase
+  if(p == NULL)
   {
-    sum += square(p->value);
-    p=p->next;
+    return 0;
   }
-  return sum;
+// Recursive
+    else 
+  { 
+    sum = square(p->value) + sum_squares(p->next);
+    return sum;
+  }   
 }
 
 typedef int (*fn_int_to_int)(int);
@@ -57,15 +70,17 @@ node *map(node *p, fn_int_to_int f) {
   
   int r;
 
-  // pre
-  assert(p!= NULL);
-
-  f = square
-
-  for(; p!=NULL; p = p->next)
+// Basecase
+  if(p == NULL)
+  {
+    return NULL;
+  }
+// Recursive
+  else
+  {
     r = f(p->value);
-  
-return r;
+    return make_node(r, map(p->next,f));
+  }
 }
   
 
